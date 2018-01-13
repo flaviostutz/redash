@@ -1,0 +1,2 @@
+# redash
+Redash Docker container.
