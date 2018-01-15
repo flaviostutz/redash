@@ -1,6 +1,12 @@
 #!/bin/bash
 
-echo "STARTING REDASH - $1"
+COMMAND=$1
+
+if [ "$COMMAND" == "" ]; then
+    COMMAND="server"
+fi
+
+echo "STARTING REDASH - $COMMAND"
 
 if [ ! -f initdone ]; then
     echo "Executing /app/bin/docker-entrypoint server create_db..."
@@ -13,6 +19,6 @@ if [ ! -f initdone ]; then
     touch initdone
 fi
 
-echo "Running $1..."
-/app/bin/docker-entrypoint $1
+echo "Running $COMMAND..."
+/app/bin/docker-entrypoint $COMMAND
 
